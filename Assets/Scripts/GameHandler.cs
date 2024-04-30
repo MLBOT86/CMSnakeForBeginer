@@ -18,11 +18,23 @@ using CodeMonkey.Utils;
 
 public class GameHandler : MonoBehaviour {
 
+    private static GameHandler instance;
+
+
+    private static int score;
+
     [SerializeField] private Snake snake;
+    
 
     private LevelGreed levelGreed;
+
+
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start() {
-        Debug.Log("GameHandler.Start");
+       // Debug.Log("GameHandler.Start");
         levelGreed = new LevelGreed(20, 20);
         snake.Setup(levelGreed);
         levelGreed.Setup(snake);
@@ -40,5 +52,13 @@ public class GameHandler : MonoBehaviour {
        // SpriteRenderer snakeSpriteRenderer = snakeHeadGameObject.AddComponent<SpriteRenderer>();
        // snakeSpriteRenderer.sprite = GameAssets.i.snakeHeadSprite;
     }
+    public static int GetScore()
+    {
+        return score;
+    }
 
+    public static void AddScore()
+    {
+        score += 100;
+    }
 }

@@ -43,7 +43,7 @@ public class LevelGreed
         {
             Object.Destroy(foodGameObject);
             SpawnFood();
-            CMDebug.TextPopupMouse("Snake Ate Food");
+            GameHandler.AddScore();
             return true;
         }
         else
