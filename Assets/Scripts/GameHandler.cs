@@ -40,10 +40,7 @@ public class GameHandler : MonoBehaviour {
         snake.Setup(levelGreed);
         levelGreed.Setup(snake);
 
-        CMDebug.ButtonUI(Vector2.zero, "Reload Scene", () =>
-        {
-            Loader.Load(Loader.Scene.SampleScene);
-        });
+       
 
         //int number = 0;
 
@@ -70,5 +67,8 @@ public class GameHandler : MonoBehaviour {
     public static void AddScore()
     {
         score += 100;
+    }
+    public static void SnakeDied() {
+        GameOverWindow.ShowStatic();
     }
 }

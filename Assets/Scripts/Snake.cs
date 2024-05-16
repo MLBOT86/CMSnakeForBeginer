@@ -167,9 +167,10 @@ public class Snake : MonoBehaviour
                  if (gridPosition == snakeBodyPartGridPosition)
                  {
                //GameOver!
-                 CMDebug.TextPopup("DEAD!", transform.position);
+               
 
                     state = State.Dead;
+                    GameHandler.SnakeDied();
                  }
             }
 
