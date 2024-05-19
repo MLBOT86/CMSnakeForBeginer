@@ -55,6 +55,23 @@ public class GameHandler : MonoBehaviour {
        // SpriteRenderer snakeSpriteRenderer = snakeHeadGameObject.AddComponent<SpriteRenderer>();
        // snakeSpriteRenderer.sprite = GameAssets.i.snakeHeadSprite;
     }
+
+
+    private void Update()
+    {
+        if(Input.GetKeyUp(KeyCode.Escape))
+        {
+            if (IsGamePaused())
+            {
+                GameHandler.ResumeGame();
+            }
+            else
+            {
+                GameHandler.PauseGame();
+            }
+            
+        }
+    }
     private static void InitializeStatic()
     {
         score = 0;
@@ -70,5 +87,21 @@ public class GameHandler : MonoBehaviour {
     }
     public static void SnakeDied() {
         GameOverWindow.ShowStatic();
+    }
+
+    public static void ResumeGame() { 
+
+        PauseWindow.HideStatic();
+        Time.timeScale = 1f;
+
+    }
+
+    public static void PauseGame() {
+        PauseWindow.ShowStatic();
+        Time.timeScale = 0f;
+    }
+
+    public static bool IsGamePaused() {
+    return Time.timeScale == 0f;
     }
 }

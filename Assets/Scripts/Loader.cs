@@ -8,7 +8,8 @@ public static class Loader
     public enum Scene
     {
         SampleScene,
-        Loading
+        Loading,
+        MainMenu
     }
 
     private static Action loaderCallBackAction;
