@@ -22,6 +22,7 @@ public class GameHandler : MonoBehaviour {
 
 
     private static int score;
+    private const string HIGH_SCORE = "highscore";
 
     [SerializeField] private Snake snake;
     
@@ -33,6 +34,10 @@ public class GameHandler : MonoBehaviour {
     {
         instance = this;
         InitializeStatic();
+        Time.timeScale = 1f;
+        PlayerPrefs.SetInt(HIGH_SCORE, 666);
+        PlayerPrefs.Save();
+        Debug.Log(PlayerPrefs.GetInt(HIGH_SCORE));
     }
     private void Start() {
        // Debug.Log("GameHandler.Start");
