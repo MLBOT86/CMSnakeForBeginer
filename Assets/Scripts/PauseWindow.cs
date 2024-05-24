@@ -12,7 +12,14 @@ public class PauseWindow : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        { // Ёкземпл€р менеджера был найден
+            instance = this; // «адаем ссылку на экземпл€р объекта
+        }
+        else if (instance == this)
+        { // Ёкземпл€р объекта уже существует на сцене
+            Destroy(gameObject); // ”дал€ем объект
+        }
         Hide();
     }
     private void Start()
@@ -24,7 +31,7 @@ public class PauseWindow : MonoBehaviour
 
     private void Show()
     {
-        gameObject.SetActive(true);
+       gameObject.SetActive(true);
 
     }
     private void Hide()
@@ -33,6 +40,7 @@ public class PauseWindow : MonoBehaviour
     }
     public static void ShowStatic()
     {
+        
         instance.Show();
     }
 

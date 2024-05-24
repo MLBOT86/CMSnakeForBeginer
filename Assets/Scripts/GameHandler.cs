@@ -21,8 +21,8 @@ public class GameHandler : MonoBehaviour {
     private static GameHandler instance;
 
 
-    private static int score;
-    private const string HIGH_SCORE = "highscore";
+   
+   // private const string HIGH_SCORE = "highscore";
 
     [SerializeField] private Snake snake;
     
@@ -32,12 +32,17 @@ public class GameHandler : MonoBehaviour {
 
     private void Awake()
     {
-        instance = this;
-        InitializeStatic();
+        if (instance == null)
+        { // Экземпляр менеджера был найден
+            instance = this; // Задаем ссылку на экземпляр объекта
+        }
+        else if (instance == this)
+        { // Экземпляр объекта уже существует на сцене
+            Destroy(gameObject); // Удаляем объект
+        }
+        Score.InitializeStatic();
         Time.timeScale = 1f;
-        PlayerPrefs.SetInt(HIGH_SCORE, 666);
-        PlayerPrefs.Save();
-        Debug.Log(PlayerPrefs.GetInt(HIGH_SCORE));
+      // Score.TrySetNewHighscore(100);
     }
     private void Start() {
        // Debug.Log("GameHandler.Start");
@@ -77,24 +82,17 @@ public class GameHandler : MonoBehaviour {
             
         }
     }
-    private static void InitializeStatic()
-    {
-        score = 0;
-    }
-    public static int GetScore()
-    {
-        return score;
-    }
-
-    public static void AddScore()
-    {
-        score += 100;
-    }
+    
     public static void SnakeDied() {
-        GameOverWindow.ShowStatic();
+
+        bool isNewHighscore =  Score.TrySetNewHighscore();
+        Debug.Log( "bool" +isNewHighscore);
+        GameOverWindow.ShowStatic(isNewHighscore);
+        ScoreWinodw.HideStatic();
     }
 
-    public static void ResumeGame() { 
+    public static void ResumeGame() {
+       
 
         PauseWindow.HideStatic();
         Time.timeScale = 1f;

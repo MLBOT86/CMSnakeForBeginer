@@ -317,8 +317,8 @@ public class Snake : MonoBehaviour
         }
         public Vector2Int GetGridPosition()
         {
-            Debug.Log("получаем вектор куска змеи из класса сныйк боди");
-            Debug.Log(snakeMovePosition+ " snakeMovePosition");
+          //  Debug.Log("получаем вектор куска змеи из класса сныйк боди");
+           // Debug.Log(snakeMovePosition+ " snakeMovePosition");
            
 
             return snakeMovePosition.GetGridPosition();
