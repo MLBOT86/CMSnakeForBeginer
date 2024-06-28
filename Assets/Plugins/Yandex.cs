@@ -30,10 +30,14 @@ public class Yandex : MonoBehaviour
 
     public void HelloButton()
     {
-        GiveMePlayerData();
+       // GiveMePlayerData();
     }
 
+    private void Start()
+    {
+        GiveMePlayerData();
 
+    }
     public void SetName(string name)
     {
         _nameText.text = name;

@@ -32,11 +32,11 @@ public class Language : MonoBehaviour
     }
     private void Update()
     {
-        if(Input.GetKeyUp(KeyCode.L)) {
+       
 
             CurrentLanguage = GetLang();
             _languageText.text = CurrentLanguage;
-        }
+        
     }
 
     IEnumerator ShowCurrentLanguage()

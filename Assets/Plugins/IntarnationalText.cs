@@ -13,14 +13,7 @@ public class IntarnationalText : MonoBehaviour
     {
 
 
-      //  StartCoroutine(TranslateCourutine());
-
-
-
-    }
-    IEnumerator TranslateCourutine()
-    {
-
+        //  StartCoroutine(TranslateCourutine());
 
         if (Language.Instance.CurrentLanguage == "en")
         {
@@ -35,6 +28,13 @@ public class IntarnationalText : MonoBehaviour
             GetComponent<TextMeshProUGUI>().text = _en;
 
         }
+
+
+    }
+    IEnumerator TranslateCourutine()
+    {
+
+
 
 
         yield return new WaitForSeconds(4f);
